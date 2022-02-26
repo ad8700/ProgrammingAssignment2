@@ -17,12 +17,16 @@ rankhospital <- function(state, outcome, num = 'best') {
   # Check that state and outcome are valid
   State_Check <- c(df$state)
   Outcome_Check <- c("heart attack", "heart failure", "pneumonia")
+  num_Check <- c("best", "worst", 1:nrow(df))
   
   if(!state %in% State_Check) stop("Invalid state provided")
   state
   
   if(!outcome %in% Outcome_Check) stop("Invalid outcome provided")
   outcome
+  
+  if(!num %in% numCheck) stop ("Must provide either best, worst or an integer")
+  num  
   
   #Filter to only hospitals in the selected state
   hOutcomes <- df[(df[,"state"]==state),]
